@@ -70,7 +70,11 @@
         }
 
         function countData() {
-            $("#display").html("count does not work");
+            UTdata.fetchAll()
+            .then(function(results){
+            })
+            .catch(function(results){
+            })
         }
 
         function deleteData() {

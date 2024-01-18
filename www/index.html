@@ -118,8 +118,15 @@
 <body>
     <h1 class="text-light bg-secondary">e-learning</h1>
     <div>
-        <input type="text" id="data" placeholder="解答">
-        <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Enter</a>
+        <label for="name">name:</label>
+        <input id="name" type="text" placeholder="英単語">
+        <br>
+        <label for="translation">translation:</label>
+        <input id="translation" type="text" placeholder="英語訳">
+        <a onclick="updateData()" class="btn btn-outline-secondary" role="button">Add</a>
+    </div>
+    <div>
+        
     </div>
     <div>
         <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch</a>

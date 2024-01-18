@@ -15,6 +15,8 @@
         let key = "name";
         let Oplus;
         let Ominus;
+        let Tplus;
+        let Tminus;
 
         function enterData() {
             let uTdata = new UTdata();
@@ -33,6 +35,8 @@
                 })
                 Oplus = value;
                 Ominus = value;
+                Tplus = value;
+                Tminus = value;
         }
 
         function plus(){
@@ -52,6 +56,8 @@
                 })
                 Ominus = Oplus;
                 Oplus = Oplus;
+                Tplus = Oplus;
+                Tminus = Oplus;
         }
 
         function minus(){
@@ -71,6 +77,50 @@
                 })
                 Oplus = Ominus;
                 Ominus = Ominus;
+                Tplus = Ominus;
+                Tminus = Ominus;
+        }
+
+        function pluses(){
+            let uTdata = new UTdata();
+            Tplus += 10;
+            uTdata.set(key, Tplus)
+                .save()
+                .then(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-success");
+                    $("#display").html("enter success");
+                })
+                .catch(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("enter fail");
+                })
+                Ominus = Tplus;
+                Oplus = Tplus;
+                Tplus = Tplus;
+                Tminus = Tplus;
+        }
+
+        function minuses(){
+            let uTdata = new UTdata();
+            Tminus -= 10;
+            uTdata.set(key, Tminus)
+                .save()
+                .then(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-success");
+                    $("#display").html("enter success");
+                })
+                .catch(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("enter fail");
+                })
+                Ominus = Tminus;
+                Oplus = Tminus;
+                Tplus = Tminus;
+                Tminus = Tminus;
         }
 
         function fetchAll() {
@@ -168,8 +218,8 @@
     <div>
         <a onclick="plus()" class="btn btn-outline-secondary" role="buton">+</a>
         <a onclick="minus()" class="btn btn-outline-secondary" role="buton">-</a>
-        <a onclick="minus()" class="btn btn-outline-secondary" role="buton">+10</a>
-        <a onclick="minus()" class="btn btn-outline-secondary" role="buton">-10</a>
+        <a onclick="pluses()" class="btn btn-outline-secondary" role="buton">+10</a>
+        <a onclick="minuses()" class="btn btn-outline-secondary" role="buton">-10</a>
         <br>
         <a onclick="" class="btn btn-outline-secondary" role="buton">×</a>
         <a onclick="" class="btn btn-outline-secondary" role="buton">÷</a>

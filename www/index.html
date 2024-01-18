@@ -12,7 +12,7 @@
     <script>
         let ncmb = new NCMB(appKey, clientKey);
         let UTdata = ncmb.DataStore("UpdateTest");
-        let key = "score";
+        let key = "name";
 
         function enterData() {
             let uTdata = new UTdata();
@@ -29,6 +29,10 @@
                     $("#display").addClass("bg-warning");
                     $("#display").html("enter fail");
                 })
+        }
+
+        function plus(){
+            data++;
         }
 
         function fetchAll() {
@@ -99,6 +103,7 @@
             .then(function(results){
                 let value = parseInt($("#update").val());
                 results.set(key, value);
+                results.set(key2, value);
                 return results.update();
             })
             .then(function(results){
@@ -116,17 +121,17 @@
 </head>
 
 <body>
-    <h1 class="text-light bg-secondary">e-learning</h1>
+    <h1 class="text-light bg-secondary">計算機</h1>
     <div>
-        <label for="name">name:</label>
-        <input id="name" type="text" placeholder="英単語">
-        <br>
-        <label for="translation">translation:</label>
-        <input id="translation" type="text" placeholder="英語訳">
-        <a onclick="updateData()" class="btn btn-outline-secondary" role="button">Add</a>
+        <label for="name">number:</label>
+        <input id="data" type="text" placeholder="数字">
+        <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Set</a>
     </div>
     <div>
-        
+        <a onclick="" class="btn btn-outline-secondary" role="buton">+</a>
+        <a onclick="" class="btn btn-outline-secondary" role="buton">-</a>
+        <a onclick="" class="btn btn-outline-secondary" role="buton">×</a>
+        <a onclick="" class="btn btn-outline-secondary" role="buton">÷</a>
     </div>
     <div>
         <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch</a>
@@ -134,8 +139,6 @@
         <a onclick="deleteData()" class="btn btn-outline-primary" role="buton">Delete</a>
     </div>
     <div>
-        <input type="text" id="update" placeholder="単語追加">
-        <a onclick="updateData()" class="btn btn-outline-primary" role="button">Add</a>
     </div>
     <div id="display" class="text-light bg-info">
         Word

@@ -13,6 +13,8 @@
         let ncmb = new NCMB(appKey, clientKey);
         let UTdata = ncmb.DataStore("UpdateTest");
         let key = "name";
+        let Oplus;
+        let Ominus;
 
         function enterData() {
             let uTdata = new UTdata();
@@ -29,10 +31,46 @@
                     $("#display").addClass("bg-warning");
                     $("#display").html("enter fail");
                 })
+                Oplus = value;
+                Ominus = value;
         }
 
         function plus(){
-            data++;
+            let uTdata = new UTdata();
+            Oplus++;
+            uTdata.set(key, Oplus)
+                .save()
+                .then(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-success");
+                    $("#display").html("enter success");
+                })
+                .catch(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("enter fail");
+                })
+                Ominus = Oplus;
+                Oplus = Oplus;
+        }
+
+        function minus(){
+            let uTdata = new UTdata();
+            Ominus--;
+            uTdata.set(key, Ominus)
+                .save()
+                .then(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-success");
+                    $("#display").html("enter success");
+                })
+                .catch(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("enter fail");
+                })
+                Oplus = Ominus;
+                Ominus = Ominus;
         }
 
         function fetchAll() {
@@ -128,8 +166,11 @@
         <a onclick="enterData()" class="btn btn-outline-secondary" role="button">Set</a>
     </div>
     <div>
-        <a onclick="" class="btn btn-outline-secondary" role="buton">+</a>
-        <a onclick="" class="btn btn-outline-secondary" role="buton">-</a>
+        <a onclick="plus()" class="btn btn-outline-secondary" role="buton">+</a>
+        <a onclick="minus()" class="btn btn-outline-secondary" role="buton">-</a>
+        <a onclick="minus()" class="btn btn-outline-secondary" role="buton">+10</a>
+        <a onclick="minus()" class="btn btn-outline-secondary" role="buton">-10</a>
+        <br>
         <a onclick="" class="btn btn-outline-secondary" role="buton">×</a>
         <a onclick="" class="btn btn-outline-secondary" role="buton">÷</a>
     </div>

@@ -202,37 +202,12 @@
                 })
         }
 
-        function sortData() {
-            UTdata.order(key, true).fetchAll()
-            .then(function(results){
-                let msg = "";
-                for(let i = 0; i < results.length; i++){
-                    msg += results[i].get(key) + "<br>";
-                }
-                $("#display").removeClass();
-                $("#display").addClass("text-light");
-                $("#display").addClass("bg-primary");
-                $("#display").html(msg);
-            })
-            .catch(function(error){
-                $("#display").removeClass();
-                $("#display").addClass("bg-warning");
-                $("#display").html("delete fail:" + JSON.stringify(error));
-            })
-        }
-
-        function countData() {
-            UTdata.fetchAll()
-            .then(function(results){
-            })
-            .catch(function(results){
-            })
-        }
+        
 
         function deleteData() {
             UTdata.fetch()
             .then(function(results){
-                return results.delete();
+                return results.deleteAll();
             })
             .then(function(results){
                 $("#display").removeClass();
@@ -290,8 +265,7 @@
         <a onclick="quotient()" class="btn btn-outline-secondary" role="buton">÷</a>
     </div>
     <div>
-        <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch</a>
-        <a onclick="sortData()" class="btn btn-outline-primary" role="button">Sort</a>
+        <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">FetchAll</a>
         <a onclick="deleteData()" class="btn btn-outline-primary" role="buton">Delete</a>
     </div>
     <div>

@@ -17,6 +17,8 @@
         let Ominus;
         let Tplus;
         let Tminus;
+        let products;
+        let quotients;
 
         function enterData() {
             let uTdata = new UTdata();
@@ -37,6 +39,8 @@
                 Ominus = value;
                 Tplus = value;
                 Tminus = value;
+                products = value;
+                quotients = value;
         }
 
         function plus(){
@@ -58,6 +62,8 @@
                 Oplus = Oplus;
                 Tplus = Oplus;
                 Tminus = Oplus;
+                products = Oplus;
+                quotients = Oplus;
         }
 
         function minus(){
@@ -79,6 +85,8 @@
                 Ominus = Ominus;
                 Tplus = Ominus;
                 Tminus = Ominus;
+                product = Ominus;
+                quotients = Ominus;
         }
 
         function pluses(){
@@ -100,6 +108,8 @@
                 Oplus = Tplus;
                 Tplus = Tplus;
                 Tminus = Tplus;
+                product = Tplus;
+                quotients = Tplus;
         }
 
         function minuses(){
@@ -121,6 +131,56 @@
                 Oplus = Tminus;
                 Tplus = Tminus;
                 Tminus = Tminus;
+                product = Tminus;
+                quotients = Tminus;
+        }
+
+        function product() {
+            let uTdata = new UTdata();
+            let value = parseInt($("#p").val());
+            let Pans = products * value;
+            uTdata.set(key, Pans)
+                .save()
+                .then(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-success");
+                    $("#display").html("enter success");
+                })
+                .catch(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("enter fail");
+                })
+                Oplus = Pans;
+                Ominus = Pans;
+                Tplus = Pans;
+                Tminus = Pans;
+                products = Pans;
+                quotients = Pans;
+        }
+
+        function quotient() {
+            let uTdata = new UTdata();
+            let value = parseInt($("#q").val());
+            let Qans = quotients / value;
+            uTdata.set(key, Qans)
+                .save()
+                .then(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-success");
+                    $("#display").html("enter success");
+                })
+                .catch(function(results) {
+                    $("#display").removeClass();
+                    $("#display").addClass("bg-warning");
+                    $("#display").html("enter fail");
+                })
+                Oplus = Qans;
+                Ominus = Qans;
+                Tplus = Qans;
+                Tminus = Qans;
+                products = Qans;
+                quotients = Qans;
         }
 
         function fetchAll() {
@@ -220,9 +280,14 @@
         <a onclick="minus()" class="btn btn-outline-secondary" role="buton">-</a>
         <a onclick="pluses()" class="btn btn-outline-secondary" role="buton">+10</a>
         <a onclick="minuses()" class="btn btn-outline-secondary" role="buton">-10</a>
-        <br>
-        <a onclick="" class="btn btn-outline-secondary" role="buton">×</a>
-        <a onclick="" class="btn btn-outline-secondary" role="buton">÷</a>
+    </div>
+    <div>
+        <input id="p" type="text" placeholder="積">
+        <a onclick="product()" class="btn btn-outline-secondary" role="buton">×</a>
+    </div>
+     <div>
+        <input id="q" type="text" placeholder="商">
+        <a onclick="quotient()" class="btn btn-outline-secondary" role="buton">÷</a>
     </div>
     <div>
         <a onclick="fetchAll()" class="btn btn-outline-secondary" role="buton">Fetch</a>
